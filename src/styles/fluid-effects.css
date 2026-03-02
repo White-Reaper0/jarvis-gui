@@ -1,0 +1,37 @@
+:root {
+  --gooey-color: rgba(255, 255, 255, 0.8);
+  --gooey-blur: 10px;
+}
+
+erc-native {
+  filter: url(#gooey);
+}
+
+<svg width="0" height="0">
+  <defs>
+    <filter id="gooey">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+                                                      0 1 0 0 0
+                                                      0 0 1 0 0
+                                                      0 0 0 20 -10" result="gooey" />
+      <feBlend in="SourceGraphic" in2="gooey" operator="over" />
+    </filter>
+  </defs>
+</svg>
+
+@keyframes gradient {
+  0% {
+    background-color: #76b852;
+  }
+  50% {
+    background-color: #8DC26F;
+  }
+  100% {
+    background-color: #76b852;
+  }
+}
+
+body {
+  animation: gradient 3s ease infinite;
+}
